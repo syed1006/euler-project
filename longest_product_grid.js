@@ -83,7 +83,7 @@ function maxDiagonalLeftToRight(){
             
         }
     }
-    console.log("max diagonally bottom-left to top-right", maxDia)
+    console.log("max diagonally from bottom-left to top-right", maxDia)
 }
 
 function findMaxHori(){
