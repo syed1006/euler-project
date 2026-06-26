@@ -3,11 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(smallestMultiple(20))
+	fmt.Println(smallestMultipleUsingLcm(20))
 }
 
 func smallestMultiple(limit int) int {
-	number := limit + 1
+	number := limit
 	for {
 		if evenlyDivisible(number, limit) {
 			return number
@@ -27,3 +27,26 @@ func evenlyDivisible(number int, limit int) bool {
 }
 
 // 232792560
+
+func greatestCommonDivisor(a, b int) int {
+	for b != 0 {
+		a, b = b, a%b
+	}
+	return a
+}
+
+func leastCommonMultiple(a, b int) int {
+	return a / greatestCommonDivisor(a, b) * b
+}
+
+func smallestMultipleUsingLcm(limit int) int {
+	result := 1
+
+	for i := 2; i <= limit; i++ {
+		result = leastCommonMultiple(result, i)
+	}
+
+	return result
+}
+
+// LCM(1,2,3,...,20)
