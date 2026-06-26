@@ -37,7 +37,7 @@ func isPrime(number int) bool {
 		return false
 	}
 
-	for i := 2; i*i < number; i++ {
+	for i := 2; i*i <= number; i++ {
 		if number%i == 0 {
 			return false
 		}
