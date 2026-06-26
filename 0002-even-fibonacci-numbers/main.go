@@ -3,28 +3,27 @@ package main
 import "fmt"
 
 func main() {
-
-	fibonacciSeries := []int{1, 2}
-
-	evenSum := generateFibonacci(1, 2, 4000000, &fibonacciSeries, 2)
-
-	fmt.Println(evenSum)
+	fmt.Println(evenFibonacciSum(4_000_000))
 }
 
-func generateFibonacci(firstTerm int, secondTerm int, limit int, series *[]int, sum int) int {
-	nextTerm := firstTerm + secondTerm
+func evenFibonacciSum(limit int) int {
+	a, b := 1, 2
+	sum := 2
 
-	if nextTerm%2 == 0 {
-		sum += nextTerm
+	for {
+		next := a + b
+		if next > limit {
+			break
+		}
+
+		if next%2 == 0 {
+			sum += next
+		}
+
+		a, b = b, next
 	}
 
-	if nextTerm > limit {
-		return sum
-	}
-
-	*series = append(*series, nextTerm)
-
-	return generateFibonacci(secondTerm, nextTerm, limit, series, sum)
+	return sum
 }
 
 //4613732
