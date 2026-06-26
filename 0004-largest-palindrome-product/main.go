@@ -10,11 +10,15 @@ func findPalindrome() int {
 
 	palindrome := 0
 
-	for i := 100; i < 1000; i++ {
-		for j := 100; j < 1000; j++ {
+	for i := 999; i >= 100; i-- {
+		for j := i; j >= 100; j-- {
 			product := i * j
 
-			if isPalindrome(product) && product > palindrome {
+			if product <= palindrome {
+				break
+			}
+
+			if isPalindrome(product) {
 				palindrome = product
 			}
 		}
@@ -30,15 +34,12 @@ func isPalindrome(number int) bool {
 func reverseNumber(number int) int {
 	reverse := 0
 
-	for {
+	for number > 0 {
 
 		reverse = reverse*10 + number%10
 
 		number = number / 10
 
-		if number <= 0 {
-			break
-		}
 	}
 
 	return reverse
